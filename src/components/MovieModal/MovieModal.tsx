@@ -2,11 +2,9 @@ import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import type { Movie } from "../../types/movie";
 import css from "./MovieModal.module.css";
+import PLACEHOLDER_URL from "../MovieGrid/MovieGrid";
 
 const modalRoot = document.getElementById("modal-root") as HTMLDivElement;
-
-const PLACEHOLDER_URL =
-  "https://placehold.co/240x300/0F0F0F/FFFFFF?text=No+image+available&font=poppins";
 
 interface MovieModalProps {
   movie: Movie;
@@ -56,11 +54,11 @@ function MovieModal({ movie, onClose }: MovieModalProps) {
         <img
           className={css.image}
           src={
-            (movie.backdrop_path &&
+            ((movie.backdrop_path &&
               `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`) ||
-            (movie.poster_path &&
-              `https://image.tmdb.org/t/p/w500/${movie.poster_path}`) ||
-            PLACEHOLDER_URL
+              (movie.poster_path &&
+                `https://image.tmdb.org/t/p/w500/${movie.poster_path}`) ||
+              PLACEHOLDER_URL) as string
           }
           alt={movie.title}
           loading="lazy"

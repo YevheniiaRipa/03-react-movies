@@ -6,8 +6,7 @@ interface MovieGridProps {
   onSelect: (movie: Movie) => void;
 }
 
-const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
-const PLACEHOLDER =
+export const PLACEHOLDER_URL =
   "https://placehold.co/240x300/0F0F0F/FFFFFF?text=No+image+available&font=poppins";
 
 function MovieGrid({ movies, onSelect }: MovieGridProps) {
@@ -22,8 +21,8 @@ function MovieGrid({ movies, onSelect }: MovieGridProps) {
               className={css.image}
               src={
                 movie.poster_path
-                  ? `${IMAGE_BASE_URL}${movie.poster_path}`
-                  : PLACEHOLDER
+                  ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                  : PLACEHOLDER_URL
               }
               alt={movie.title}
               loading="lazy"
