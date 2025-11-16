@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import type { Movie } from "../../types/movie";
 import css from "./MovieModal.module.css";
-import PLACEHOLDER_URL from "../MovieGrid/MovieGrid";
+import { PLACEHOLDER_URL } from "../MovieGrid/MovieGrid";
 
 const modalRoot = document.getElementById("modal-root") as HTMLDivElement;
 
@@ -54,11 +54,11 @@ function MovieModal({ movie, onClose }: MovieModalProps) {
         <img
           className={css.image}
           src={
-            ((movie.backdrop_path &&
+            (movie.backdrop_path &&
               `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`) ||
-              (movie.poster_path &&
-                `https://image.tmdb.org/t/p/w500/${movie.poster_path}`) ||
-              PLACEHOLDER_URL) as string
+            (movie.poster_path &&
+              `https://image.tmdb.org/t/p/w500/${movie.poster_path}`) ||
+            PLACEHOLDER_URL
           }
           alt={movie.title}
           loading="lazy"
